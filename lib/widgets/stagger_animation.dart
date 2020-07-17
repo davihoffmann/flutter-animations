@@ -6,9 +6,15 @@ class StaggerAnimation extends StatelessWidget {
   StaggerAnimation({this.controller})
       : buttonSqueeze = Tween(begin: 320.0, end: 60.0).animate(
           CurvedAnimation(parent: controller, curve: Interval(0.0, 0.150)),
+        ),
+        buttonZoomOut = Tween(begin: 60.0, end: 1000.0).animate(
+          CurvedAnimation(
+              parent: controller,
+              curve: Interval(0.5, 1, curve: Curves.bounceOut)),
         );
 
   final Animation<double> buttonSqueeze;
+  final Animation<double> buttonZoomOut;
 
   @override
   Widget build(BuildContext context) {
@@ -20,15 +26,26 @@ class StaggerAnimation extends StatelessWidget {
       padding: EdgeInsets.only(bottom: 50),
       child: InkWell(
         onTap: () => {controller.forward()},
-        child: Container(
-          width: buttonSqueeze.value,
-          height: 60,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-              color: Color.fromRGBO(247, 64, 106, 1.0),
-              borderRadius: BorderRadius.all(Radius.circular(30.0))),
-          child: _buildInside(context),
-        ),
+        child: buttonZoomOut.value == 60
+            ? Container(
+                width: buttonSqueeze.value,
+                height: 60,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    color: Color.fromRGBO(247, 64, 106, 1.0),
+                    borderRadius: BorderRadius.all(Radius.circular(30.0))),
+                child: _buildInside(context),
+              )
+            : Container(
+                width: buttonZoomOut.value,
+                height: buttonZoomOut.value,
+                decoration: BoxDecoration(
+                  color: Color.fromRGBO(247, 64, 106, 1.0),
+                  shape: buttonZoomOut.value < 500
+                      ? BoxShape.circle
+                      : BoxShape.rectangle,
+                ),
+              ),
       ),
     );
   }
