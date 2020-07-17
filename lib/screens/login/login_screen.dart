@@ -1,3 +1,5 @@
+import 'package:app_animations/widgets/input_field.dart';
+import 'package:app_animations/widgets/sign_up_button.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -6,7 +8,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,6 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     _form(),
+                    SignUpButton(),
                   ],
                 )
               ],
@@ -52,7 +55,16 @@ class _LoginScreenState extends State<LoginScreen> {
       child: Form(
         child: Column(
           children: <Widget>[
-
+            InputField(
+              hint: "Usuário",
+              obscure: false,
+              icon: Icons.person_outline,
+            ),
+            InputField(
+              hint: "Senha",
+              obscure: true,
+              icon: Icons.lock_outline,
+            )
           ],
         )
       ),
