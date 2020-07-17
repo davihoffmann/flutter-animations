@@ -6,6 +6,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,6 +49,13 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _form() {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20),
+      child: Form(
+        child: Column(
+          children: <Widget>[
+
+          ],
+        )
+      ),
     );
   }
 }
