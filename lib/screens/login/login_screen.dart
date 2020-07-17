@@ -1,5 +1,6 @@
 import 'package:app_animations/widgets/input_field.dart';
 import 'package:app_animations/widgets/sign_up_button.dart';
+import 'package:app_animations/widgets/stagger_animation.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -7,7 +8,19 @@ class LoginScreen extends StatefulWidget {
   _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends State<LoginScreen>
+    with SingleTickerProviderStateMixin {
+  AnimationController _animationController;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _animationController = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 2)
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
           padding: EdgeInsets.zero,
           children: <Widget>[
             Stack(
+              alignment: Alignment.bottomCenter,
               children: <Widget>[
                 Column(
                   children: <Widget>[
@@ -40,7 +54,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     _form(),
                     SignUpButton(),
                   ],
-                )
+                ),
+                StaggerAnimation(
+                  controller: _animationController.view
+                ),
               ],
             )
           ],
@@ -53,21 +70,27 @@ class _LoginScreenState extends State<LoginScreen> {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20),
       child: Form(
-        child: Column(
-          children: <Widget>[
-            InputField(
-              hint: "Usuário",
-              obscure: false,
-              icon: Icons.person_outline,
-            ),
-            InputField(
-              hint: "Senha",
-              obscure: true,
-              icon: Icons.lock_outline,
-            )
-          ],
-        )
-      ),
+          child: Column(
+        children: <Widget>[
+          InputField(
+            hint: "Usuário",
+            obscure: false,
+            icon: Icons.person_outline,
+          ),
+          InputField(
+            hint: "Senha",
+            obscure: true,
+            icon: Icons.lock_outline,
+          )
+        ],
+      )),
     );
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _animationController.dispose();
+  }
+
 }
