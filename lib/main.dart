@@ -9,20 +9,30 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: const SystemUiOverlayStyle(
-        // For Android.
-        // Use [light] for white status bar and [dark] for black status bar.
-        statusBarIconBrightness: Brightness.light,
-        // For iOS.
-        // Use [dark] for white status bar and [light] for black status bar.
-        statusBarBrightness: Brightness.dark,
+    return MaterialApp(
+      title: 'Animations with Flutter',
+      theme: ThemeData(
+        primaryColor: Color.fromRGBO(247, 64, 106, 1.0),
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        brightness: Brightness.light
       ),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Animations',
-        home: LoginScreen(),
-      ),
+      home: LoginScreen(),
     );
+
+    // return AnnotatedRegion<SystemUiOverlayStyle>(
+    //   value: const SystemUiOverlayStyle(
+    //     // For Android.
+    //     // Use [light] for white status bar and [dark] for black status bar.
+    //     statusBarIconBrightness: Brightness.light,
+    //     // For iOS.
+    //     // Use [dark] for white status bar and [light] for black status bar.
+    //     statusBarBrightness: Brightness.dark,
+    //   ),
+    //   child: MaterialApp(
+    //     debugShowCheckedModeBanner: false,
+    //     title: 'Animations',
+    //     home: LoginScreen(),
+    //   ),
+    // );
   }
 }
