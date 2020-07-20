@@ -13,9 +13,10 @@ class HomeTop extends StatelessWidget {
     return Container(
       height: screenSize.height * 0.4,
       decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("images/background.jpg"),
-        ),
+        color: Color.fromRGBO(247, 64, 106, 1.0),
+        // image: DecorationImage(
+        //   image: AssetImage("images/background.jpg"),
+        // ),
       ),
       child: SafeArea(
         child: Column(
@@ -55,7 +56,7 @@ class HomeTop extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Color.fromRGBO(80, 210, 194, 1.0)
+                  color: Color.fromRGBO(255, 100, 120, 1.0)
                 ),
               ),
             ),

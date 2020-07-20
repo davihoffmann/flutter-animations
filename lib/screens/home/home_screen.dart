@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   Widget build(BuildContext context) {
     timeDilation = 1;
-
+    
     return StaggerAnimation(
       controller: _controller,
     );
