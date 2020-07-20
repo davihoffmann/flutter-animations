@@ -1,4 +1,5 @@
 import 'package:app_animations/screens/home/widget/home_top.dart';
+import 'package:app_animations/screens/login/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class StaggerAnimation extends StatelessWidget {

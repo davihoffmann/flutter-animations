@@ -1,3 +1,4 @@
+import 'package:app_animations/screens/home/widget/category_view.dart';
 import 'package:flutter/material.dart';
 
 class HomeTop extends StatelessWidget {
@@ -57,7 +58,8 @@ class HomeTop extends StatelessWidget {
                   color: Color.fromRGBO(80, 210, 194, 1.0)
                 ),
               ),
-            )
+            ),
+            CategoryView()
           ],
         ),
       ),
